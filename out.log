@@ -1,0 +1,33 @@
+Legend for output:
+🎉 Killed mutants.   The goal is for everything to end up in this bucket.
+⏰ Timeout.          Test suite took 10 times as long as the baseline so were killed.
+🤔 Suspicious.       Tests took a long time, but not long enough to be fatal.
+🙁 Survived.         This means your tests needs to be expanded.
+
+1. Using cached time for baseline tests, to run baseline again delete the cache file
+
+2. Checking mutants
+⠼ 49/49  🎉 37  ⏰ 1  🤔 0  🙁 11
+
+mutmut results
+Timed out ⏰ (1)
+---- ./prime.py (1) ----
+9
+Survived 🙁 (11)
+---- ./prime.py (4) ----
+19, 20, 21, 22
+
+---- ./test_prime.py (7) ----
+26, 30, 31, 35, 36, 40, 46
+
+
+
+mutmut show 19
+--- ./prime.py
++++ ./prime.py
+@@ -24,5 +24,5 @@
+ 
+ import re
+ def is_prime_re(n):
+-    return re.compile(r'^1?$|^(11+)\1+$').match('1' * n) is  None
++    return re.compile(r'XX^1?$|^(11+)\1+$XX').match('1' * n) is  None
